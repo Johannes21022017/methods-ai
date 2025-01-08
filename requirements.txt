@@ -1,8 +1,9 @@
-click
-watchdog
-rich
+langchain-openai
+langchain-community
 langchain
+streamlit
 openai
-chromadb
-PyMuPDF
 python-dotenv
+PyPDF2
+faiss-cpu
+tiktoken
