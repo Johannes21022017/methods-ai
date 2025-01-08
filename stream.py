@@ -432,7 +432,7 @@ with st.sidebar:
     
     # Initialize document stores if empty
     if not st.session_state.document_stores:
-        docs_directory = "/Users/ferdinandschweigert/Coding/research_rag/documents"
+        docs_directory = "documents"
         if os.path.exists(docs_directory):
             with st.spinner("Loading documents..."):
                 st.session_state.document_stores = initialize_document_store(docs_directory)
