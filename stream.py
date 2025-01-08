@@ -92,7 +92,7 @@ if os.path.exists(index_path):
         allow_dangerous_deserialization=True
     )
 else:
-    initial_directory = "/Users/ferdinandschweigert/Coding/research_rag/documents"  # Replace with the path to your documents
+    initial_directory = "documents"  # Replace with the path to your documents
     documents = load_initial_documents(initial_directory)
     if documents:
         vector_store = FAISS.from_documents(documents, embeddings)
