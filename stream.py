@@ -89,7 +89,7 @@ if os.path.exists(index_path):
         allow_dangerous_deserialization=True
     )
 else:
-    initial_directory = "/Users/ferdinandschweigert/Coding/research_rag/fortai_rag/documents"  # Replace with the path to your documents
+    initial_directory = "documents"  # Replace with the path to your documents
     documents = load_initial_documents(initial_directory)
     if documents:
         vector_store = FAISS.from_documents(documents, embeddings)
@@ -429,7 +429,7 @@ with st.sidebar:
     
     # Initialize document stores if empty
     if not st.session_state.document_stores:
-        docs_directory = "/Users/ferdinandschweigert/Coding/research_rag/fortai_rag/documents"
+        docs_directory = "documents"
         if os.path.exists(docs_directory):
             with st.spinner("Loading documents..."):
                 st.session_state.document_stores = initialize_document_store(docs_directory)
