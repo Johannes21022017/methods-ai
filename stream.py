@@ -21,15 +21,15 @@ from pathlib import Path
 load_dotenv()
 
 # Fetch the OpenAI API key from the environment or Streamlit secrets
-if 'OPENAI_API_KEY' in st.secrets:
-    openai_api_key = st.secrets['OPENAI_API_KEY']
-else:
-    openai_api_key = os.getenv("OPENAI_API_KEY")
+openai_api_key = os.getenv("OPENAI_API_KEY")
 
 # Check if API key is available
 if not openai_api_key:
-    st.error("OpenAI API key not found. Please set the OPENAI_API_KEY in your environment or Streamlit secrets.")
-    st.stop()
+    try:
+        openai_api_key = st.secrets['OPENAI_API_KEY']
+    except Exception:
+        st.error("OpenAI API key not found. Please set the OPENAI_API_KEY in your environment or Streamlit secrets.")
+        st.stop()
 
 # Initialize session states
 if "messages" not in st.session_state:
