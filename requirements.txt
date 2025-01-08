@@ -1,0 +1,8 @@
+click
+watchdog
+rich
+langchain
+openai
+chromadb
+PyMuPDF
+python-dotenv
