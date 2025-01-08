@@ -556,11 +556,6 @@ ENV/
 
 # Streamlit
 .streamlit/
-
-# Project specific
-indexes/
-faiss_index/
-temp_uploaded_file.pdf
 """
     with open(".gitignore", "w") as f:
         f.write(gitignore_content)
