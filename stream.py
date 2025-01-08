@@ -20,16 +20,13 @@ from pathlib import Path
 # Load environment variables from .env file
 load_dotenv()
 
-# Fetch the OpenAI API key from the environment or Streamlit secrets
+# Fetch the OpenAI API key from the environment
 openai_api_key = os.getenv("OPENAI_API_KEY")
 
 # Check if API key is available
 if not openai_api_key:
-    try:
-        openai_api_key = st.secrets['OPENAI_API_KEY']
-    except Exception:
-        st.error("OpenAI API key not found. Please set the OPENAI_API_KEY in your environment or Streamlit secrets.")
-        st.stop()
+    st.error("OpenAI API key not found. Please check your .env file.")
+    st.stop()
 
 # Initialize session states
 if "messages" not in st.session_state:
@@ -92,7 +89,7 @@ if os.path.exists(index_path):
         allow_dangerous_deserialization=True
     )
 else:
-    initial_directory = "documents"  # Replace with the path to your documents
+    initial_directory = "/Users/ferdinandschweigert/Coding/research_rag/fortai_rag/documents"  # Replace with the path to your documents
     documents = load_initial_documents(initial_directory)
     if documents:
         vector_store = FAISS.from_documents(documents, embeddings)
@@ -432,7 +429,7 @@ with st.sidebar:
     
     # Initialize document stores if empty
     if not st.session_state.document_stores:
-        docs_directory = "documents"
+        docs_directory = "/Users/ferdinandschweigert/Coding/research_rag/fortai_rag/documents"
         if os.path.exists(docs_directory):
             with st.spinner("Loading documents..."):
                 st.session_state.document_stores = initialize_document_store(docs_directory)
